@@ -1,24 +1,16 @@
-import { useEffect, useState } from 'react'
+import { Route, Routes } from 'react-router'
+import ProductPage from './components/ProductPage'
 import CreateProduct from './components/products/CreateProduct'
-import Products from './components/products/Products'
-import { IProduct } from './models/product'
+import EditProduct from './components/products/EditProduct'
 
 function App() {
-	const [products, setProducts] = useState<IProduct[]>([])
-
-	useEffect(() => {
-		const fetchProducts = async () => {
-			const res = await fetch('http://localhost:8080/products')
-			const prds: IProduct[] = await res.json()
-			setProducts(prds)
-		}
-		fetchProducts()
-	}, [products])
-
 	return (
 		<div id='app'>
-			<CreateProduct />
-			<Products>{products}</Products>
+			<Routes>
+				<Route path='/edit/:id' element={<EditProduct />} />
+				<Route path='/create' element={<CreateProduct />} />
+				<Route caseSensitive path='/' element={<ProductPage />} />
+			</Routes>
 		</div>
 	)
 }

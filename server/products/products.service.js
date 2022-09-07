@@ -10,9 +10,9 @@ class ProductsService {
 		return promisify(this.products)
 	}
 	async create(product) {
-		if (!product) throw new Error('Undefined')
-		this.products.push(product)
-		const result = await promisify(product)
+		if (!product || !product.title || product.id) throw new Error('Undefined')
+		this.products.push({ ...product, id: products.length + 1 })
+		const result = await promisify(this.products[this.products.length - 1])
 		return result
 	}
 	async edit(id, product) {

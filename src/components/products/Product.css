@@ -1,0 +1,66 @@
+thead {
+	font-size: 18px;
+}
+tr:hover {
+	cursor: pointer;
+}
+td .price::after {
+	content: '$';
+}
+.ava {
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+.create-product {
+	width: 650px;
+	margin: 50px;
+}
+.create-product div {
+	display: flex;
+	flex-direction: column;
+}
+.create-product > section > .block {
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.create-product .price-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.create-product .price-block * {
+	margin-right: 10px;
+}
+.create-product label {
+	font-size: 22px;
+	font-weight: bold;
+}
+.create-product .btn-block {
+	margin-top: 30px;
+	display: flex;
+	justify-content: space-between;
+}
+.create-product .product-image {
+	margin: 20px;
+	margin-left: 0;
+	width: 130px;
+	height: 150px;
+	border-radius: 7px;
+}
+
+.create-product .error {
+	color: red;
+}
+
+.create-product .images {
+	display: flex;
+}
+.create-product .images * {
+	margin-right: 15px;
+	display: flex;
+	flex-direction: column;
+}
