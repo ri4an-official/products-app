@@ -1,3 +1,7 @@
+const cities = [
+	{ id: 1, name: 'Алматы', price: 5200 },
+	{ id: 2, name: 'Актобе', price: 5200 },
+]
 function createProduct(id, title, images, description = title, basePrice = 1000) {
 	return {
 		id,
@@ -5,10 +9,12 @@ function createProduct(id, title, images, description = title, basePrice = 1000)
 		description,
 		images,
 		basePrice,
+		isSamePrice: true,
+		cities,
 	}
 }
 
-const shuffle = (arr) =>
+const shuffle = (arr = []) =>
 	arr
 		.map((value) => ({ value, sort: Math.random() }))
 		.sort((a, b) => a.sort - b.sort)
@@ -28,8 +34,9 @@ export const products = [
 	createProduct(3, 'Product 3', shuffle(urls)),
 	createProduct(4, 'Product 4', shuffle(urls)),
 	createProduct(5, 'Product 5', shuffle(urls)),
-]
-export const cities = [
-	{ id: 1, name: 'Алматы', price: 5200 },
-	{ id: 2, name: 'Актобе', price: 5200 },
+	createProduct(6, 'Product 6', shuffle(urls)),
+	createProduct(7, 'Product 7', shuffle(urls)),
+	createProduct(8, 'Product 8', shuffle(urls)),
+	createProduct(9, 'Product 9', shuffle(urls)),
+	createProduct(10, 'Product 10', shuffle(urls)),
 ]

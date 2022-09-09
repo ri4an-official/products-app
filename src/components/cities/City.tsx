@@ -1,12 +1,19 @@
 import { ICity } from '../../models/product'
 
-const City = ({ children }: { children: ICity }) => {
+interface Props {
+	children: ICity
+	setCities: (c: ICity) => any
+}
+
+const City = ({ children, setCities }: Props) => {
+	const onChange = (e: any) => setCities(e.target.value)
+
 	return (
 		<tr>
-			<th>{children.name}</th>
-			<th>
-				<input type='text' value={children.price} />
-			</th>
+			<td>{children.name}</td>
+			<td>
+				<input value={children.price} onChange={onChange} />
+			</td>
 		</tr>
 	)
 }

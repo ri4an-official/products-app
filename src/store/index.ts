@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import productsReducer from './products'
 
 const store = configureStore({

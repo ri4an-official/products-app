@@ -1,16 +1,27 @@
 import { ICity } from '../../models/product'
 import City from './City'
 
-const CitiesTable = ({ children }: { children: ICity[] }) => {
+interface Props {
+	children: ICity[]
+	setCities: (c: any) => any
+}
+
+const CitiesTable = ({ children, setCities }: Props) => {
 	return (
 		<table className='table'>
-			<tr>
-				<th>Город</th>
-				<th>Цена</th>
-			</tr>
-			{children.map((c) => (
-				<City>{c}</City>
-			))}
+			<thead>
+				<tr>
+					<th>Город</th>
+					<th>Цена</th>
+				</tr>
+			</thead>
+			<tbody>
+				{children.map((c) => (
+					<City setCities={setCities} key={c.id}>
+						{c}
+					</City>
+				))}
+			</tbody>
 		</table>
 	)
 }

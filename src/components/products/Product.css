@@ -64,3 +64,20 @@ td .price::after {
 	display: flex;
 	flex-direction: column;
 }
+
+.search {
+	display: flex;
+	align-items: center;
+}
+
+.search input {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 90%;
+	height: 37px;
+}
+.search button {
+	border-radius: 0%;
+	border-bottom-right-radius: 14px;
+	border-top-right-radius: 14px;
+}

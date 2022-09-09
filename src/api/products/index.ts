@@ -1,9 +1,11 @@
-import { IProduct } from '../../models/product'
-import { fetchExtended, Method, productConfig } from './config'
+import { IOptions, IProduct } from '../../models/product'
+import { fetchExtended, mapParams, Method, productConfig } from '../config'
 
 class ProductService {
-	async getAll() {
-		const res: IProduct[] = await fetchExtended(productConfig.GET_ALL)
+	async getAll(params?: IOptions) {
+		const res: IProduct[] = await fetchExtended(
+			productConfig.GET_ALL + mapParams(params)
+		)
 		return res
 	}
 	async create(product: IProduct) {

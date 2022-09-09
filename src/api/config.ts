@@ -25,3 +25,9 @@ export async function fetchExtended(url: string, method = 'GET', body: any = {})
 	const json = await res.json()
 	return json
 }
+
+export const mapParams = (params?: any) =>
+	'?' +
+	Object.entries(params ?? {})
+		.map(([key, value]) => `${key}=${value}`)
+		.join('&')

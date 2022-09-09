@@ -1,10 +1,14 @@
+import { IOptions } from './../../models/product/index'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import productService from '../../api/products'
-import { IProduct } from './../../models/product'
+import { IParams, IProduct } from './../../models/product'
 
-export const fetchProducts = createAsyncThunk('products/get-all', async () => {
-	return await productService.getAll()
-})
+export const fetchProducts = createAsyncThunk(
+	'products/get-all',
+	async (params?: IOptions) => {
+		return await productService.getAll(params)
+	}
+)
 
 export const createProduct = createAsyncThunk(
 	'products/create',
@@ -55,7 +59,10 @@ const products = createSlice({
 
 		builder.addCase(editProduct.fulfilled, (s, { payload }) => {
 			s.error = payload.message ?? ''
-			// s.items.push(payload)
+		})
+		builder.addCase(deleteProduct.fulfilled, (s, { payload }) => {
+			s.error = payload.message ?? ''
+			if (!s.error) s.items = s.items.filter((p) => p.id !== payload.id)
 		})
 	},
 })
