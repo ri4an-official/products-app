@@ -6,7 +6,14 @@ export interface IProduct {
 	basePrice: number
 	isSamePrice: boolean
 	cities: ICity[]
+	isActive: boolean
 	message?: string
+}
+
+export interface IResponse {
+	page: number
+	total: number
+	items: IProduct[]
 }
 
 export interface IParams {

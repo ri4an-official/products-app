@@ -1,3 +1,6 @@
+table {
+	width: 100%;
+}
 thead {
 	font-size: 18px;
 }
@@ -13,53 +16,60 @@ td .price::after {
 	border-radius: 10px;
 }
 
+.edit-product,
 .create-product {
-	width: 650px;
 	margin: 50px;
 }
-.create-product div {
+
+.form-product {
+	--image-margin: 10px;
+	--image-width: 130px;
+	--image-size: calc(var(--image-width) + var(--image-margin));
+	width: calc(var(--image-size) * 5.5);
+}
+.form-product div {
 	display: flex;
 	flex-direction: column;
 }
-.create-product > section > .block {
+.form-product .block {
 	margin-bottom: 30px;
 	display: flex;
 	justify-content: space-between;
 }
 
-.create-product .price-block {
+.form-product .price-block {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
-.create-product .price-block * {
+.form-product .price-block * {
 	margin-right: 10px;
 }
-.create-product label {
+.form-product label {
 	font-size: 22px;
 	font-weight: bold;
 }
-.create-product .btn-block {
+.form-product .btn-block {
 	margin-top: 30px;
 	display: flex;
 	justify-content: space-between;
 }
-.create-product .product-image {
-	margin: 20px;
+.form-product .product-image {
+	width: var(--image-width);
+	margin: var(--image-margin);
 	margin-left: 0;
-	width: 130px;
 	height: 150px;
 	border-radius: 7px;
 }
 
-.create-product .error {
+.form-product .error {
 	color: red;
 }
 
-.create-product .images {
+.form-product .images {
 	display: flex;
 }
-.create-product .images * {
+.form-product .images * {
 	margin-right: 15px;
 	display: flex;
 	flex-direction: column;
@@ -73,7 +83,7 @@ td .price::after {
 .search input {
 	margin-top: 20px;
 	margin-bottom: 20px;
-	width: 90%;
+	width: 100%;
 	height: 37px;
 }
 .search button {

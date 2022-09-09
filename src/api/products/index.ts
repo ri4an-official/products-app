@@ -1,9 +1,10 @@
 import { IOptions, IProduct } from '../../models/product'
 import { fetchExtended, mapParams, Method, productConfig } from '../config'
+import { IResponse } from './../../models/product/index'
 
 class ProductService {
 	async getAll(params?: IOptions) {
-		const res: IProduct[] = await fetchExtended(
+		const res: IResponse = await fetchExtended(
 			productConfig.GET_ALL + mapParams(params)
 		)
 		return res

@@ -38,14 +38,18 @@ const FormProduct = ({ fetchProduct, product }: Props) => {
 			description: desc.value,
 			basePrice: +price.value,
 			images,
-			isSamePrice,
 			cities,
+			isSamePrice,
+			isActive,
 		}
 		fetchProduct(result)
 	}
 
+	const [isActive, setIsActive] = useState(product?.isActive ?? true)
+	const mapStatus = (status: boolean) => (status ? 'Активный' : 'В архиве')
+
 	return (
-		<section>
+		<section className='form-product'>
 			<div className='block'>
 				<label>Название</label>
 				<input type='text' {...title} />
@@ -74,6 +78,18 @@ const FormProduct = ({ fetchProduct, product }: Props) => {
 					))}
 				</section>
 				<input type='file' onChange={onImageChange} />
+			</div>
+			<div className='block'>
+				<label>Статус товара</label>
+				<p className='form-check'>
+					<input
+						checked={isActive}
+						onChange={(e) => setIsActive(e.target.checked)}
+						className='form-check-input'
+						type='checkbox'
+					/>
+					<span className='form-check-label'>{mapStatus(isActive)}</span>
+				</p>
 			</div>
 			<div className='block'>
 				<label>Цена</label>

@@ -15,6 +15,7 @@ const Product = ({ children }: { children: IProduct }) => {
 		await dispatch(deleteProduct(children.id ?? 1))
 		if (error) alert(error)
 	}
+
 	return (
 		<tr className='text-center'>
 			<td>

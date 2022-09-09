@@ -1,7 +1,7 @@
-import { IOptions } from './../../models/product/index'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import productService from '../../api/products'
-import { IParams, IProduct } from './../../models/product'
+import { IProduct } from './../../models/product'
+import { IOptions } from './../../models/product/index'
 
 export const fetchProducts = createAsyncThunk(
 	'products/get-all',
@@ -40,6 +40,7 @@ const products = createSlice({
 		items: [] as IProduct[],
 		pending: false,
 		error: '',
+		total: 0,
 	},
 	reducers: {},
 	extraReducers(builder) {
@@ -48,7 +49,8 @@ const products = createSlice({
 		})
 
 		builder.addCase(fetchProducts.fulfilled, (s, { payload }) => {
-			s.items = [...payload]
+			s.items = [...payload.items]
+			s.total = payload.total
 			s.pending = false
 		})
 

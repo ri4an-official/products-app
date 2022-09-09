@@ -9,8 +9,9 @@ function createProduct(id, title, images, description = title, basePrice = 1000)
 		description,
 		images,
 		basePrice,
-		isSamePrice: true,
 		cities,
+		isSamePrice: true,
+		isActive: true,
 	}
 }
 
@@ -39,4 +40,9 @@ export const products = [
 	createProduct(8, 'Product 8', shuffle(urls)),
 	createProduct(9, 'Product 9', shuffle(urls)),
 	createProduct(10, 'Product 10', shuffle(urls)),
+	createProduct(11, 'Product 11', shuffle(urls)),
+	createProduct(12, 'Product 12', shuffle(urls)),
+	createProduct(13, 'Product 13', shuffle(urls)),
+	createProduct(14, 'Product 14', shuffle(urls)),
+	createProduct(15, 'Product 15', shuffle(urls)),
 ]

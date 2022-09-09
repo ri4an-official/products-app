@@ -3,7 +3,7 @@ import productsService from './products.service.js'
 class ProductsController {
 	async getAll(req, res) {
 		try {
-			const { p = 1, limit = 5, title } = req.query
+			const { p = 1, limit = 5, title = '' } = req.query
 			const products = await productsService.getAll({ p, limit, title })
 			res.json(products)
 		} catch (e) {

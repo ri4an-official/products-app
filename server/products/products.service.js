@@ -8,24 +8,27 @@ class ProductsService {
 		this.products = products
 	}
 	async getAll({ p, limit, title }) {
-		const products = await promisify(this.products)
+		const products = [...(await promisify(this.products))]
 
-		const total = products.length,
-			skip = p * limit
-
-		const paged = [...products].filter((_, i) => i + 1 >= skip)
-
-		if (!title) return
+		const page = +p,
+			pageSize = +limit,
+			start = (page - 1) * pageSize,
+			end = page * pageSize
 
 		const onFilter = (p) => p.title.toLowerCase().includes(title.toLowerCase())
+		const items = products.filter(onFilter)
 
-		const res = paged.filter(onFilter)
+		const pagedItems = [...items].slice(start, end)
+
+		const total = items.length
+
 		return {
-			items: res,
-			page: p,
+			items: pagedItems,
+			page,
 			total,
 		}
 	}
+
 	async create(product) {
 		if (!product || !product.title || product.id)
 			throw new Error('Fill required fields!')
@@ -33,6 +36,7 @@ class ProductsService {
 		const result = await promisify(this.products[this.products.length - 1])
 		return result
 	}
+
 	async edit(id, product) {
 		const i = this.products.findIndex((p) => p.id === id)
 		if (i === -1) throw new Error(`Product with id "${id}" is not exist!`)
@@ -41,6 +45,7 @@ class ProductsService {
 		const result = await promisify(this.products[i])
 		return result
 	}
+
 	async delete(id) {
 		const product = this.products.find((p) => p.id === id)
 		if (!product) throw new Error(`Product with id "${id}" is not exist!`)
