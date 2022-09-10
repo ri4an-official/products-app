@@ -29,7 +29,9 @@ const Product = ({ children }: { children: IProduct }) => {
 				<div className='title'>{children.title}</div>
 			</th>
 			<td>
-				<div className='description'>{children.description}</div>
+				<div className='isActive'>
+					{children.isActive ? 'ACTIVE' : 'NON ACTIVE'}
+				</div>
 			</td>
 			<td>
 				<div className='price'>{children.basePrice}</div>

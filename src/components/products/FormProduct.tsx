@@ -4,6 +4,7 @@ import useInput from '../../models/hooks/useInput'
 import { useAppSelector } from '../../models/hooks/useReactRedux'
 import { ICity, IProduct } from '../../models/product'
 import CitiesTable from '../cities/CitiesTable'
+import HtmlEditor from '../HtmlEditor'
 
 interface Props {
 	fetchProduct: (p: IProduct) => void
@@ -19,7 +20,8 @@ const FormProduct = ({ fetchProduct, product }: Props) => {
 	const [isSamePrice, setIsSamePrice] = useState(product?.isSamePrice ?? true)
 
 	const title = useInput(product?.title)
-	const desc = useInput(product?.description)
+	// const desc = useInput(product?.description)
+	const [desc, setDesc] = useState(product?.description ?? '')
 	const price = useInput(product?.basePrice! + '')
 
 	const onImageChange = (e: any) => {
@@ -35,7 +37,7 @@ const FormProduct = ({ fetchProduct, product }: Props) => {
 	const onFetch = async () => {
 		const result: IProduct = {
 			title: title.value,
-			description: desc.value,
+			description: desc,
 			basePrice: +price.value,
 			images,
 			cities,
@@ -56,7 +58,8 @@ const FormProduct = ({ fetchProduct, product }: Props) => {
 			</div>
 			<div className='block'>
 				<label>Описание</label>
-				<textarea {...desc} />
+				{/* <textarea {...desc} /> */}
+				<HtmlEditor description={desc} setDescription={setDesc} />
 			</div>
 			<div className='block'>
 				<label>Фотографии</label>

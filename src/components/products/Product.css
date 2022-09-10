@@ -27,7 +27,7 @@ td .price::after {
 	--image-size: calc(var(--image-width) + var(--image-margin));
 	width: calc(var(--image-size) * 5.5);
 }
-.form-product div {
+.form-product > div {
 	display: flex;
 	flex-direction: column;
 }

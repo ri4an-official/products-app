@@ -6,7 +6,7 @@ export interface IProduct {
 	basePrice: number
 	isSamePrice: boolean
 	cities: ICity[]
-	isActive: boolean
+	isActive: boolean 
 	message?: string
 }
 

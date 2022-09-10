@@ -15,19 +15,22 @@
     "dependencies": {
         "@reduxjs/toolkit": "^1.8.5",
         "cors": "^2.8.5",
+        "dompurify": "^2.4.0",
+        "draft-convert": "^2.1.12",
+        "draft-js": "^0.11.7",
         "express": "^4.18.1",
         "rc-pagination": "^3.1.17",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-draft-wysiwyg": "^1.15.0",
         "react-redux": "^8.0.2",
         "react-router": "^6.3.0",
-        "react-router-dom": "^6.3.0",
-        "slate": "^0.82.1",
-        "slate-react": "^0.82.1"
+        "react-router-dom": "^6.3.0"
     },
     "devDependencies": {
         "@types/react": "^18.0.17",
         "@types/react-dom": "^18.0.6",
+        "@types/react-draft-wysiwyg": "^1.13.4",
         "@types/react-redux": "^7.1.24",
         "@types/react-router": "^5.1.18",
         "@types/react-router-dom": "^5.3.3",

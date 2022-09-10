@@ -7,7 +7,7 @@ const Products = ({ children }: { children: IProduct[] }) => (
 			<tr className='text-center'>
 				<th scope='col'></th>
 				<th scope='col'>Title</th>
-				<th scope='col'>Description</th>
+				<th scope='col'>Is Active</th>
 				<th scope='col'>Price</th>
 			</tr>
 		</thead>
