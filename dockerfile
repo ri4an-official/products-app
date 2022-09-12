@@ -9,6 +9,8 @@ RUN yarn
 
 COPY . .
 
-VOLUME [ "/server/data" ]
+EXPOSE 4000
+
+VOLUME [ "." ]
 
 CMD [ "yarn", "start" ]
