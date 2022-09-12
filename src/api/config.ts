@@ -1,5 +1,8 @@
+const PORT = 4000
 const BASE_URL =
-	process.env.NODE_ENV !== 'production' ? 'http://localhost:8080/products' : ''
+	process.env.NODE_ENV !== 'production'
+		? `http://localhost:${PORT}/products`
+		: `http://localhost:${PORT}/products`
 
 export const productConfig = {
 	GET_ALL: BASE_URL,

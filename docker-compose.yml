@@ -1,9 +1,0 @@
-version: '3.0'
-
-services:
-  product-app:
-    container_name: product-app
-    image: node:16-alpine
-    build: .
-    ports:
-      - 4000:4000
