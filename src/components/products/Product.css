@@ -1,0 +1,93 @@
+table {
+	width: 100%;
+}
+thead {
+	font-size: 18px;
+}
+tr:hover {
+	cursor: pointer;
+}
+td .price::after {
+	content: '$';
+}
+.ava {
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+.edit-product,
+.create-product {
+	margin: 50px;
+}
+
+.form-product {
+	--image-margin: 10px;
+	--image-width: 130px;
+	--image-size: calc(var(--image-width) + var(--image-margin));
+	width: calc(var(--image-size) * 5.5);
+}
+.form-product > div {
+	display: flex;
+	flex-direction: column;
+}
+.form-product .block {
+	margin-bottom: 30px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.form-product .price-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.form-product .price-block * {
+	margin-right: 10px;
+}
+.form-product label {
+	font-size: 22px;
+	font-weight: bold;
+}
+.form-product .btn-block {
+	margin-top: 30px;
+	display: flex;
+	justify-content: space-between;
+}
+.form-product .product-image {
+	width: var(--image-width);
+	margin: var(--image-margin);
+	margin-left: 0;
+	height: 150px;
+	border-radius: 7px;
+}
+
+.form-product .error {
+	color: red;
+}
+
+.form-product .images {
+	display: flex;
+}
+.form-product .images * {
+	margin-right: 15px;
+	display: flex;
+	flex-direction: column;
+}
+
+.search {
+	display: flex;
+	align-items: center;
+}
+
+.search input {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width: 100%;
+	height: 37px;
+}
+.search button {
+	border-radius: 0%;
+	border-bottom-right-radius: 14px;
+	border-top-right-radius: 14px;
+}

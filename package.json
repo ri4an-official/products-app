@@ -1,0 +1,42 @@
+{
+    "name": "products-app",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "server": "node server/index.js",
+        "server:dev": "nodemon server/index.js",
+        "dev": "vite",
+        "start": "vite & node server/index.js",
+        "start:dev": "vite & nodemon server/index.js",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@reduxjs/toolkit": "^1.8.5",
+        "cors": "^2.8.5",
+        "dompurify": "^2.4.0",
+        "draft-convert": "^2.1.12",
+        "draft-js": "^0.11.7",
+        "express": "^4.18.1",
+        "rc-pagination": "^3.1.17",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-draft-wysiwyg": "^1.15.0",
+        "react-redux": "^8.0.2",
+        "react-router": "^6.3.0",
+        "react-router-dom": "^6.3.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.0.17",
+        "@types/react-dom": "^18.0.6",
+        "@types/react-draft-wysiwyg": "^1.13.4",
+        "@types/react-redux": "^7.1.24",
+        "@types/react-router": "^5.1.18",
+        "@types/react-router-dom": "^5.3.3",
+        "@vitejs/plugin-react": "^2.1.0",
+        "nodemon": "^2.0.19",
+        "typescript": "^4.6.4",
+        "vite": "^3.1.0"
+    }
+}
