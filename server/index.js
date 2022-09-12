@@ -2,7 +2,7 @@ import cors from 'cors'
 import express from 'express'
 import router from './products/products.router.js'
 
-const PORT = process.env.PORT ?? 8080
+const PORT = process.env.PORT ?? 4000
 
 const app = express()
 

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router'
 import useInput from '../../models/hooks/useInput'
 import { useAppSelector } from '../../models/hooks/useReactRedux'
 import { IProduct } from '../../models/product'
-import { setCityProducts } from '../../store/products'
 import CitiesTable from '../cities/CitiesTable'
 import HtmlEditor from '../HtmlEditor'
 
@@ -122,6 +121,12 @@ const FormProduct = ({ fetchProduct, product }: Props) => {
 					Save
 				</button>
 			</p>
+			{isDisabled && (
+				<div className='alert alert-danger' role='alert'>
+					Fill required fields: title, photos, price
+				</div>
+			)}
+
 			{error && (
 				<div className='alert alert-danger' role='alert'>
 					{error}
