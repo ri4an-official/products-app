@@ -3,6 +3,8 @@ const BASE_URL =
 
 export const productConfig = {
 	GET_ALL: BASE_URL,
+	GET_CITIES: `${BASE_URL}/cities/`,
+	SET_CITIES: `${BASE_URL}/cities/edit`,
 	CREATE: `${BASE_URL}/create`,
 	EDIT: `${BASE_URL}/edit/`,
 	DELETE: `${BASE_URL}/delete/`,

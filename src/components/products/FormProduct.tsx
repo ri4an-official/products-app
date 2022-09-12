@@ -2,7 +2,8 @@ import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router'
 import useInput from '../../models/hooks/useInput'
 import { useAppSelector } from '../../models/hooks/useReactRedux'
-import { ICity, IProduct } from '../../models/product'
+import { IProduct } from '../../models/product'
+import { setCityProducts } from '../../store/products'
 import CitiesTable from '../cities/CitiesTable'
 import HtmlEditor from '../HtmlEditor'
 
@@ -16,13 +17,12 @@ const FormProduct = ({ fetchProduct, product }: Props) => {
 	const { error } = useAppSelector((s) => s.products)
 
 	const [images, setImages] = useState<string[]>(product?.images ?? [])
-	const [cities, setCities] = useState<ICity[]>(product?.cities ?? [])
 	const [isSamePrice, setIsSamePrice] = useState(product?.isSamePrice ?? true)
 
 	const title = useInput(product?.title)
 	// const desc = useInput(product?.description)
 	const [desc, setDesc] = useState(product?.description ?? '')
-	const price = useInput(product?.basePrice! + '')
+	const price = useInput(product?.price! + '')
 
 	const onImageChange = (e: any) => {
 		const [file] = e.target.files
@@ -36,11 +36,11 @@ const FormProduct = ({ fetchProduct, product }: Props) => {
 
 	const onFetch = async () => {
 		const result: IProduct = {
+			id: 0,
 			title: title.value,
 			description: desc,
-			basePrice: +price.value,
+			price: +price.value,
 			images,
-			cities,
 			isSamePrice,
 			isActive,
 		}
@@ -108,9 +108,7 @@ const FormProduct = ({ fetchProduct, product }: Props) => {
 					</p>
 					<input disabled={!isSamePrice} type='number' {...price} />
 				</div>
-				{!isSamePrice && (
-					<CitiesTable setCities={setCities}>{cities}</CitiesTable>
-				)}
+				{!isSamePrice && <CitiesTable product={product} />}
 			</div>
 			<p className='btn-block'>
 				<button className='btn' onClick={() => nav('/')}>

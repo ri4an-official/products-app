@@ -1,4 +1,4 @@
-import { products } from '../data/index.js'
+import { cities, products } from '../data/index.js'
 
 // Simulate query to db
 const promisify = (data) => new Promise((res) => res(data)).catch(console.log)
@@ -6,6 +6,32 @@ const promisify = (data) => new Promise((res) => res(data)).catch(console.log)
 class ProductsService {
 	constructor() {
 		this.products = products
+		this.cities = cities
+	}
+	async getCities(id) {
+		const cities = [...(await promisify(this.cities))]
+		const filteredCities = cities.map((c) => ({
+			...c,
+			products: c.products.filter((p) => p.id === id),
+		}))
+		return filteredCities
+	}
+	async setCity(cid, pid, price) {
+		const cities = [...(await promisify(this.cities))]
+		const city = cities.find((c) => c.id === cid)
+
+		if (!pid) {
+			city.products.push({ id: Date.now(), price })
+			return city
+		}
+
+		city.products = city.products.map((p) =>
+			p.id === pid ? { ...p, price } : p
+		)
+
+		this.cities = this.cities.map((c) => (c.id === cid ? { ...city, ...c } : c))
+
+		return city
 	}
 	async getAll({ p, limit, title }) {
 		const products = [...(await promisify(this.products))]
@@ -16,14 +42,15 @@ class ProductsService {
 			end = page * pageSize
 
 		const onFilter = (p) => p.title.toLowerCase().includes(title.toLowerCase())
-		const items = products.filter(onFilter)
+		const filtered = products.filter(onFilter)
 
-		const pagedItems = [...items].slice(start, end)
+		const paged = filtered.slice(start, end)
 
-		const total = items.length
+		const total = filtered.length
+		const items = paged
 
 		return {
-			items: pagedItems,
+			items,
 			page,
 			total,
 		}

@@ -34,7 +34,7 @@ const Product = ({ children }: { children: IProduct }) => {
 				</div>
 			</td>
 			<td>
-				<div className='price'>{children.basePrice}</div>
+				<div className='price'>{children.price}</div>
 			</td>
 			<td>
 				<Link to={`/edit/${children.id}`} className='btn btn-warning m-2'>

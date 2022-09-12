@@ -1,12 +1,11 @@
 export interface IProduct {
-	id?: number
+	id: number
 	title: string
 	images: string[]
 	description: string
-	basePrice: number
+	price: number
 	isSamePrice: boolean
-	cities: ICity[]
-	isActive: boolean 
+	isActive: boolean
 	message?: string
 }
 
@@ -29,5 +28,10 @@ export type IOptions = IParams & IPagination
 export interface ICity {
 	id?: number
 	name: string
+	products: IProduct[]
+}
+export interface SetCity {
+	productId?: number
+	cityId: number
 	price: number
 }

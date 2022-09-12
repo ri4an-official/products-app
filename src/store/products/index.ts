@@ -1,12 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import productService from '../../api/products'
-import { IProduct } from './../../models/product'
+import { ICity, IProduct, SetCity } from './../../models/product'
 import { IOptions } from './../../models/product/index'
 
 export const fetchProducts = createAsyncThunk(
 	'products/get-all',
 	async (params?: IOptions) => {
 		return await productService.getAll(params)
+	}
+)
+export const fetchCities = createAsyncThunk('cities/get', async (id?: number) => {
+	return await productService.getCities(id)
+})
+
+export const setCityProducts = createAsyncThunk(
+	'cities/set',
+	async (props: SetCity) => {
+		return await productService.setCityProducts(props)
 	}
 )
 
@@ -41,9 +51,14 @@ const products = createSlice({
 		pending: false,
 		error: '',
 		total: 0,
+		cities: [] as ICity[],
 	},
 	reducers: {},
 	extraReducers(builder) {
+		builder.addCase(fetchCities.fulfilled, (s, { payload }) => {
+			s.cities = [...payload]
+		})
+
 		builder.addCase(fetchProducts.pending, (s) => {
 			s.pending = true
 		})

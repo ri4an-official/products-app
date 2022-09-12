@@ -41,7 +41,6 @@ const HtmlEditor = ({ description, setDescription }: Props) => {
 	const onEditorStateChange = (es: EditorState) => {
 		setEditorState(es)
 		setDescription((ref.current as any).editor.editor.innerHTML)
-		console.log((ref.current as any).editor.editor.innerHTML)
 	}
 
 	useEffect(() => {
